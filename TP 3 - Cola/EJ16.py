@@ -7,9 +7,9 @@
 # f. cargue dos documentos de empleados y uno de gerente.
 # g. imprima todos los documentos de la cola de impresión.
 
-from heap import HeapMin
+from heap import HeapMax
 
-cola_impresion = HeapMin()
+cola_impresion = HeapMax()
 
 # a. cargue tres documentos de empleados (cada documento se representa solamente con un nombre).
 cola_impresion.arrive('Documento empleado 1', 1)
@@ -21,8 +21,8 @@ print()
 print('-----B-----')
 print()
 
-prioridad, documento = cola_impresion.attention()
-print(documento)
+print("Primer documento impreso:")
+print(cola_impresion.attention()[1])
 
 # c. cargue dos documentos del staff de TI.
 cola_impresion.arrive('Documento TI 1', 2)
@@ -36,9 +36,11 @@ print()
 print('-----E-----')
 print()
 
+print("Dos primeros documentos impresos:")
+print()
+
 for i in range(2):
-    prioridad, documento = cola_impresion.attention()
-    print(documento)
+    print(cola_impresion.attention()[1])
 
 # f. cargue dos documentos de empleados y uno de gerente.
 cola_impresion.arrive('Documento empleado 4', 1)
@@ -50,6 +52,8 @@ print()
 print('-----G-----')
 print()
 
+print("Documentos restantes:")
+print()
+
 while cola_impresion.size() > 0:
-    prioridad, documento = cola_impresion.attention()
-    print(documento)
+    print(cola_impresion.attention()[1])
